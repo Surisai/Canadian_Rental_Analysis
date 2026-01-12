@@ -1,14 +1,24 @@
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import subprocess
 from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
 import seaborn as sns
-from pathlib import Path
 import numpy as np
 from datetime import datetime
 
+#Configuration add centralize all paths 
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+PROVINCE_COMPARISON_PATH = (
+    BASE_DIR/"outputs/province_analysis/data/province_comparison.csv"
+)
+
+
+ANALYSIS_SCRIPT = BASE_DIR /"scripts/province_analysis.py"
 # Page configuration
 st.set_page_config(
     page_title="Canadian Rental Analysis",
@@ -16,6 +26,51 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+#status handler 
+def ensure_analysis_data():
+    """
+    Ensures required analysis data exists.
+    Returns True if data is ready, False otherwise.
+    """
+
+    if PROVINCE_COMPARISON_PATH.exists():
+        return True
+
+    st.warning("📊 Analysis data is not available yet.")
+
+    st.markdown("""
+    **What’s happening?**
+    - This app requires pre-computed analysis results.
+    - Streamlit Cloud starts with a clean environment.
+    
+    **What can you do?**
+    - Click the button below to generate the data.
+    """)
+
+    if st.button("▶ Run Analysis Pipeline"):
+        with st.spinner("Running analysis... this may take a moment"):
+            try:
+                subprocess.run(
+                    ["python", str(ANALYSIS_SCRIPT)],
+                    check=True
+                )
+                st.success("✅ Analysis completed successfully!")
+                st.rerun()
+            except Exception as e:
+                st.error("❌ Analysis failed.")
+                st.exception(e)
+
+    return False
+
+#Checking is the data is missing
+if not ensure_analysis_data():
+    st.stop()
+
+#Safe to load data 
+df = pd.read_csv(PROVINCE_COMPARISON_PATH)
+
+#Rest of the dashboard code 
+
 
 # Custom CSS
 def add_custom_css():
@@ -420,6 +475,7 @@ def create_explorer_tab(province_data_dict):
                 file_name=f"{selected_province.lower().replace(' ', '_')}_filtered.csv",
                 mime="text/csv"
             )
+
 
 # Main app
 def main():
