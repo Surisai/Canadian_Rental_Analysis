@@ -8,8 +8,10 @@ from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import sys 
 from datetime import datetime
 
+st.write("Python version:", sys.version) #Temporary
 #Configuration add centralize all paths 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
