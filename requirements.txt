@@ -1,36 +1,36 @@
-# # Core Data Science
-# pandas>=1.5
-# numpy>=1.23
-# matplotlib>=3.6
-# seaborn>=0.12
-# plotly>=5.13
-
-# # Dashboard
-# streamlit>=1.24
-# streamlit-aggrid>=0.3.4
-# streamlit-option-menu>=0.3.6
-
-# # Utilities
-# scipy>=1.9
-# scikit-learn>=1.2
-# openpyxl>=3.1
-
-# # Mapping (only if actually used)
-# folium>=0.14
-
-# Core Data Science - Python 3.13 compatible versions
-pandas==2.2.0
-numpy==1.26.4
-matplotlib==3.8.3
-seaborn==0.13.2
-plotly==5.18.0
+# Core Data Science
+pandas>=1.5
+numpy>=1.23
+matplotlib>=3.6
+seaborn>=0.12
+plotly>=5.13
 
 # Dashboard
-streamlit==1.32.0
-streamlit-aggrid==0.3.4.post3
-streamlit-option-menu==0.3.6
+streamlit>=1.24
+streamlit-aggrid>=0.3.4
+streamlit-option-menu>=0.3.6
 
 # Utilities
-scipy==1.13.0
-scikit-learn==1.4.2
-openpyxl==3.1.2
+scipy>=1.9
+scikit-learn>=1.2
+openpyxl>=3.1
+
+# Mapping (only if actually used)
+folium>=0.14
+
+# # Core Data Science - Python 3.13 compatible versions
+# pandas==2.2.0
+# numpy==1.26.4
+# matplotlib==3.8.3
+# seaborn==0.13.2
+# plotly==5.18.0
+
+# # Dashboard
+# streamlit==1.32.0
+# streamlit-aggrid==0.3.4.post3
+# streamlit-option-menu==0.3.6
+
+# # Utilities
+# scipy==1.13.0
+# scikit-learn==1.4.2
+# openpyxl==3.1.2
