@@ -16,9 +16,10 @@ warnings.filterwarnings('ignore')
 # ================================
 # CONFIGURATION WITH FOLDER STRUCTURE
 # ================================
-INPUT_PATH = Path('/Users/mastp/Documents/DataProject/rental/data/processed/rentals_clean.csv')
-# Main output directory
-MAIN_OUTPUT_DIR = Path('/Users/mastp/Documents/DataProject/rental/outputs/province_analysis')
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+INPUT_PATH = BASE_DIR / "data" / "processed" / "rentals_clean.csv"
+MAIN_OUTPUT_DIR = BASE_DIR / "outputs" / "province_analysis"
 
 # Create structured subdirectories
 OUTPUT_DIRS = {
@@ -32,10 +33,8 @@ OUTPUT_DIRS = {
 }
 
 # Create all directories
-for dir_name, dir_path in OUTPUT_DIRS.items():
+for dir_path in OUTPUT_DIRS.values():
     dir_path.mkdir(parents=True, exist_ok=True)
-    print(f"✓ Created directory: {dir_path}")
-
 # ================================
 # STEP 1: LOAD DATA
 # ================================

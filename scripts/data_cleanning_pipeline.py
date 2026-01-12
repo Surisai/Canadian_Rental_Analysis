@@ -18,9 +18,11 @@ warnings.filterwarnings('ignore')
 # ================================
 # CONFIGURATION
 # ================================
-RAW_DATA_PATH = Path('/Users/mastp/Documents/DataProject/rental/data/raw/rentals.csv')
-CLEAN_DATA_PATH = Path('/Users/mastp/Documents/DataProject/rental/data/processed/rentals_clean.csv')
-LOG_PATH = Path('/Users/mastp/Documents/DataProject/rental/logs/data_cleaning_log.txt')
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+RAW_DATA_PATH = BASE_DIR / "data" / "raw" / "rentals.csv"
+CLEAN_DATA_PATH = BASE_DIR / "data" / "processed" / "rentals_clean.csv"
+LOG_PATH = BASE_DIR / "logs" / "data_cleaning_log.txt"
 
 # Create directories if they don't exist
 CLEAN_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
